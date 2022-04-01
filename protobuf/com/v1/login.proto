@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "github.com/devnull-twitch/pond-com/protobuf/com";
+package protobuf.com.v1;
+
+service LoginService {
+    rpc Start(StartRequest) returns (StartResponse);
+    rpc Poll(PollRequest) returns (PollResponse);
+}
+
+message StartRequest { }
+
+message StartResponse {
+    string request_token = 1;
+}
+
+message PollRequest {
+    string request_token = 1;
+}
+
+message PollResponse {
+    enum Status {
+        STATUS_UNSPECIFIED = 0;
+        STATUS_WAITING = 1;
+        STATUS_SUCCESS = 2;
+        STATUS_FAILED = 3;
+    }
+    Status status = 1;
+}
