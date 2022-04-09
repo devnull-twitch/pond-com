@@ -11,7 +11,8 @@ service LoginService {
 message StartRequest { }
 
 message StartResponse {
-    string request_token = 1;
+    string auth_url = 1;
+    string request_token = 2;
 }
 
 message PollRequest {
@@ -26,4 +27,5 @@ message PollResponse {
         STATUS_FAILED = 3;
     }
     Status status = 1;
+    string jwt = 2;
 }
