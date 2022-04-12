@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option go_package = "github.com/devnull-twitch/pond-com/protobuf/event";
+package protobuf.event.v1;
+
+service EventService {
+    rpc Create(CreateRequest) returns (CreateResponse);
+    rpc Delete(DeleteRequest) returns (DeleteResponse);
+    rpc Emit(EmitRequest) returns (EmitResponse);
+}
+
+enum EventSource {
+    EVENT_SOURCE_UNSPECIFIED = 0;
+    EVENT_SOURCE_COMMAND = 1;
+    EVENT_SOURCE_COMMUNITY = 2;
+    EVENT_SOURCE_MANUAL = 3;
+}
+
+message CreateRequest {
+    bool enabled = 1;
+    string event_identifier = 2;
+    int64 created = 3;
+    EventSource source = 5;
+    string source_identifier = 6;
+    string storage = 7;
+}
+
+message CreateResponse {}
+
+message EventPayload {
+    int64 created = 1;
+    string data = 10;
+}
+
+message DeleteRequest {
+    string event_identifier = 1;
+}
+
+message DeleteResponse {}
+
+message EmitRequest {
+    string event_identifier = 1;
+    string data_identifier = 5;
+    string data = 7;
+}
+
+message EmitResponse {}

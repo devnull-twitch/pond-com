@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "github.com/devnull-twitch/pond-com/protobuf/pond";
+package protobuf.pond.v1;
+
+service PondService {
+    rpc Dashboard(DashboardRequest) returns (DashboardResponse);
+}
+
+message DashboardRequest {}
+
+message DashboardResponse {
+    bool setup_complete = 10;
+    bool chat_running = 12;
+}

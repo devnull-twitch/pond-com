@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-option go_package = "github.com/devnull-twitch/pond-com/protobuf/com";
-package protobuf.com.v1;
+option go_package = "github.com/devnull-twitch/pond-com/protobuf/login";
+package protobuf.login.v1;
 
 service LoginService {
     rpc Start(StartRequest) returns (StartResponse);
